@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Sakha - The Complete Agricultural Resource</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /**********************************
+         * MODERN STYLING & COLOR PALETTE *
+         **********************************/
+        :root {
+            --primary-color: #004d40; /* Deep Teal */
+            --accent-color: #FFD700;  /* Lavish Gold */
+            --background-color: #fdf6e3; /* Creamy Off-White */
+            --text-color: #333333;      /* Charcoal Grey */
+            --light-text: #ffffff;
+            /* Header background will be explicitly set to white/transparent white */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            /* cursor: none; Removed custom cursor */
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+
+        /**********************************
+         * HEADER & NAVIGATION (NEW FRIENDLY DESIGN) *
+         **********************************/
+        header {
+            background: rgba(255, 255, 255, 0.9); /* White background for approachability */
+            backdrop-filter: blur(10px);
+            color: var(--primary-color); /* Default text color for nav links on white */
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--primary-color); /* Teal border */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: padding 0.3s ease;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo-container {
+            display: flex; /* To align logo and h1 horizontally */
+            align-items: center; /* Vertically align them */
+            gap: 10px; /* Space between logo and text */
+        }
+
+        header .header-logo {
+            height: 40px; /* Adjust size as needed for header */
+            transition: height 0.3s ease;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Cinzel', serif; /* Keep Cinzel for grandeur */
+            font-size: 2.5em; /* Dominant Size */
+            letter-spacing: 2px; /* Adjusted for multi-color */
+            /* Removed glow animation and text-shadow */
+            transition: font-size 0.3s ease;
+        }
+
+        /* Multi-color for Agri Sakha letters */
+        header h1 span {
+            display: inline-block; /* Allows individual styling */
+            /* No hover transform on individual letters for simplicity */
+        }
+        header h1 span:nth-child(1) { color: #7CFC00; } /* A - Green */
+        header h1 span:nth-child(2) { color: #00BFFF; } /* g - Blue */
+        header h1 span:nth-child(3) { color: #FFA500; } /* r - Orange */
+        header h1 span:nth-child(4) { color: #FF4500; } /* i - Red */
+        /* Space is between nth-child(4) and nth-child(5) */
+        header h1 span:nth-child(5) { color: #8A2BE2; } /* S - Purple */
+        header h1 span:nth-child(6) { color: #FFD700; } /* a - Gold */
+        header h1 span:nth-child(7) { color: #7CFC00; } /* k - Green */
+        header h1 span:nth-child(8) { color: #00BFFF; } /* h - Blue */
+        header h1 span:nth-child(9) { color: #FFA500; } /* a - Orange */
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--primary-color); /* Deep Teal text on white header */
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color); /* Gold underline */
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color); /* Gold hover */
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        /**********************************
+         * MAIN CONTENT & SECTIONS *
+         **********************************/
+        main {
+            padding-top: 100px;
+        }
+        
+        .section {
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        
+        .section-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        /**********************************
+         * HOME SECTION         *
+         **********************************/
+        #home {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1492496913980-501348b61469?q=80&w=1887') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: var(--light-text);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            animation: cinematic-zoom 25s infinite;
+        }
+        
+        @keyframes cinematic-zoom {
+            0% { background-size: 100% 100%; }
+            50% { background-size: 110% 110%; }
+            100% { background-size: 100% 100%; }
+        }
+
+        #home h2 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        #home p {
+            font-size: 1.5em;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color); /* Gold background */
+            color: var(--light-text); /* White text for contrast */
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        /**********************************
+         * KNOWLEDGE SECTION STYLING *
+         **********************************/
+        #intro-knowledge {
+            background-color: var(--primary-color);
+        }
+
+        .knowledge-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 40px 50px;
+            border-radius: 15px;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--light-text);
+        }
+
+        .knowledge-box .section-logo-large {
+            height: 100px; /* Larger size for section logo */
+            margin-bottom: 20px; /* Space between logo and title */
+        }
+
+        .knowledge-box h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: var(--accent-color); /* Gold for consistency */
+            margin-bottom: 20px;
+        }
+
+        .knowledge-box p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        /**********************************
+         * CONTENT SECTIONS STYLING *
+         **********************************/
+        .content-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 60px;
+        }
+
+        .content-block:nth-child(odd) .content-text {
+            order: 2;
+        }
+        
+        .content-section {
+            background: transparent;
+        }
+
+        .content-section h3 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .section-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .advantage-card {
+            background: #fff;
+            padding: 30px;
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--accent-color);
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .advantage-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.5em;
+        }
+
+        /**********************************
+         * CONTACT SECTION        *
+         **********************************/
+        .contact-form {
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+        }
+        
+        /**********************************
+         * SCROLL ANIMATIONS      *
+         **********************************/
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .image-float-up {
+            transform: translateY(50px);
+        }
+        
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-block .content-text.animate-on-scroll {
+            transform: translateX(-100px);
+        }
+        .content-block:nth-child(odd) .content-text.animate-on-scroll {
+            transform: translateX(100px);
+        }
+        
+        .content-block .content-text.is-visible {
+            transform: translateX(0);
+        }
+        
+        /**********************************
+         * JAVASCRIPT-DRIVEN STYLES *
+         **********************************/
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+        header.scrolled .header-logo {
+            height: 30px; /* Shrink logo on scroll */
+        }
+        header.scrolled h1 {
+            font-size: 2.1em;
+        }
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+        nav ul li a.active::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /**********************************
+         * FOOTER             *
+         **********************************/
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary-color); /* Deep Teal background */
+            color: var(--light-text);
+        }
+
+        /**********************************
+         * RESPONSIVE DESIGN      *
+         **********************************/
+        @media (max-width: 768px) {
+            .content-block {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .content-block:nth-child(odd) .content-text {
+                order: 0;
+            }
+            header .container {
+                flex-direction: column;
+            }
+            header .logo-container {
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+            header h1 { font-size: 2.2em; }
+            #home h2 { font-size: 2.5em; }
+            .page-title { font-size: 2.2em; }
+            nav ul li { margin-left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://cdn.discordapp.com/attachments/1416470849220775977/1419723301550293002/create_a_logo_for_Ag.png?ex=68d2cbdc&is=68d17a5c&hm=7eba4189a3057b3d98a3596c2f4ca0081d4a9dfcff31ec1b5567827c83b6f5ce&" alt="Agri Sakha Logo" class="header-logo">
+                <h1>
+                    <span>A</span><span>g</span><span>r</span><span>i</span>
+                    <span> </span> <span>S</span><span>a</span><span>k</span><span>h</span><span>a</span>
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#intro-knowledge">What is Agri?</a></li> <li><a href="#about">About</a></li>
+                    <li><a href="#advantages">Advantages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="section">
+            <div class="section-container">
+                <h2>Cultivating Knowledge, Growing the Future</h2>
+                <p>Your central hub for agricultural innovation, information, and community. Discover the resources you need to thrive in the world of modern farming.</p>
+                <a href="#about" class="cta-button">Explore Our Resources</a>
+            </div>
+        </section>
+
+        <section id="intro-knowledge" class="section">
+            <div class="section-container container">
+                <div class="knowledge-box animate-on-scroll image-float-up">
+                    <img src="https://cdn.discordapp.com/attachments/1416470849220775977/1419723301550293002/create_a_logo_for_Ag.png?ex=68d2cbdc&is=68d17a5c&hm=7eba4189a3057b3d98a3596c2f4ca0081d4a9dfcff31ec1b5567827c83b6f5ce&" alt="Agriculture Logo" class="section-logo-large">
+                    <h2>What is Agriculture?</h2>
+                    <p>Agriculture is the fundamental practice of cultivating plants and raising livestock. It represents the cornerstone of human civilization, providing the vast majority of the world's food, fabrics, and biofuels. From ancient farming techniques to modern precision technology, agriculture encompasses a wide range of sciences and arts dedicated to land stewardship, crop production, and animal husbandry to sustain and enhance human life.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-container container">
+                <h2 class="page-title">The Details of Agriculture</h2>
+                
+                <div class="content-block">
+                    <div class="content-text animate-on-scroll">
+                        <h3>Core Practices</h3>
+                        <p>At its heart, agriculture is the art and science of cultivating the soil, growing crops, and raising livestock. It includes the preparation of plant and animal products for people to use and their distribution to markets.</p>
+                    </div>
+                    <div class="content-image animate-on-scroll image-float-up">
+                        <img src="https://images.pexels.com/photos/2131784/pexels-photo-2131784.jpeg" alt="Lush green crops in a field" class="section-image">
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-text animate-on-scroll">
+                        <h3>A Brief History</h3>
+                        <p>The history of agriculture began thousands of years ago. The Fertile Crescent of Western Asia, Egypt, and India were sites of the earliest planned sowing and harvesting of plants. The Agricultural Revolution later introduced scientific principles and new technologies that drastically increased crop yields.</p>
+                    </div>
+                    <div class="content-image animate-on-scroll image-float-up">
+                        <img src="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg" alt="An old-fashioned red tractor" class="section-image">
+                    </div>
+                </div>
+
+                <div class="content-block">
+                     <div class="content-text animate-on-scroll">
+                        <h3>Modern Agricultural Practices</h3>
+                        <p>Today, agriculture has evolved into a complex system incorporating advanced technology like Precision Agriculture, Biotechnology, Organic Farming, and Vertical Farming to enhance efficiency and sustainability.</p>
+                    </div>
+                    <div class="content-image animate-on-scroll image-float-up">
+                        <img src="https://images.pexels.com/photos/2255801/pexels-photo-2255801.jpeg" alt="A modern drone flying over a farm" class="section-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages" class="section">
+            <div class="section-container container">
+                <h2 class="page-title">Your Helping Hub for Agriculture</h2>
+                <p style="max-width: 800px; margin-bottom: 40px;">Agri Sakha is more than just a website; it's a dynamic resource designed to empower and support everyone in the agricultural community.</p>
+
+                <div class="advantage-card animate-on-scroll">
+                    <h3>Centralized Knowledge Base</h3>
+                    <p>We consolidate reliable, up-to-date information into one easy-to-navigate platform. From crop science to market trends, find what you need quickly.</p>
+                </div>
+                
+                <div class="content-image animate-on-scroll image-float-up" style="margin: 20px 0; max-width: 900px;">
+                    <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="Person using a tablet in a sunny field" class="section-image">
+                </div>
+                
+                <div class="advantage-card animate-on-scroll">
+                    <h3>Expert Insights & Best Practices</h3>
+                    <p>Gain a competitive edge with access to guides on sustainable techniques and technological innovations to improve your yields and operations.</p>
+                </div>
+                <div class="advantage-card animate-on-scroll">
+                    <h3>Support for Students & Researchers</h3>
+                    <p>Agri Sakha is an invaluable tool for education, providing structured data and historical context for projects, research, and learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="section-container container">
+                <h2 class="page-title">Get In Touch</h2>
+                <p style="max-width: 600px; margin-bottom: 40px;">Have a question, suggestion, or feedback? We'd love to hear from you!</p>
+                <div class="contact-form animate-on-scroll">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2025 Agri Sakha. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach((el) => observer.observe(el));
+            
+            const header = document.querySelector('header');
+            const headerLogo = document.querySelector('.header-logo');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) { 
+                    header.classList.add('scrolled');
+                } 
+                else { 
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+            sections.forEach(section => navObserver.observe(section));
+
+        });
+    </script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script>
+      window.botpressWebChat.init({
+          "botId": "YOUR_UNIQUE_BOT_ID",
+          "hostUrl": "https://chat.botpress.com",
+          "messagingUrl": "https://messaging.botpress.cloud",
+          "clientId": "YOUR_UNIQUE_CLIENT_ID"
+      });
+    </script>
+
+</body>
+</html>
